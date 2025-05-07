@@ -1,0 +1,15 @@
+#!/bin/bash
+
+options=(
+        style=round
+        width=12.0
+        # active_color=0xffb57edc (rich pastel purple)
+        # inactive_color=0xff7a629f (muted purple)
+        "active_color=gradient(top_left=0xffb57edc,bottom_right=0xff5e9cd3)"
+        "inactive_color=gradient(top_left=0xff3f6a91,bottom_right=0xff7a629f)" \
+)
+
+borders "${options[@]}"
+
+
+
