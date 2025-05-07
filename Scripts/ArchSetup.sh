@@ -1,5 +1,7 @@
 #Arch Driver and App Installs
 
+#This script has been written to run line by line and to explain what each install actually is.
+
 ##---Firmware and Driver Config---##
 
 #Update the system
@@ -34,6 +36,8 @@ systemctl enable cups
 sudo pacman -S firefox
 #Terminal Emulator
 sudo pacman -S kitty
+#Text Editor
+sudo pacman -S neovim
 #File manager
 sudo pacman -S thunar
 #Gaming
