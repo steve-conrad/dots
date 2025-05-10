@@ -40,8 +40,8 @@ window {
 #outer-box, #inner-box, #scroll {
   background-color: transparent;
   border: none;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
 #input {
@@ -63,8 +63,8 @@ window {
 }
 
 #text {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 10px;
   border: none;
   color: @maintext;
   background-color: transparent;
@@ -73,7 +73,7 @@ window {
 #entry {
   background-color: transparent;
   padding: 10px 20px 10px 40px;
-  margin: 0;
+  margin: 9px;
   border-radius: 0px;
 }
 
