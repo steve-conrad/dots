@@ -1,7 +1,7 @@
 My personal dot files for Arch and Yabai. Inspired by many different sources and modified to my liking. 
 
 
-RAINY ARCH CONFIG
+RAINY ARCH - 
 My main goal was to create a heavily transparent workspace with a relaxing live wallpaper backdrop for my OLED display. 
 Feel free to use these files to make a config you love!
 This has been a constant work in progress and is subject to change. :)
