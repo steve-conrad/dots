@@ -1,107 +1,112 @@
-@define-color bg_dim         #181a25;
-@define-color bg_dim_rgb     rgb(24, 26, 37);
-@define-color bg_base        #20233a;
-@define-color bg_base_rgb    rgb(32, 35, 58);
-@define-color bg_panel       #29334c;
-@define-color bg_panel_rgb   rgb(41, 51, 76);
+@define-color bg_dim             #181a25;
+@define-color bg_dim_rgb         rgb(24, 26, 37);
+@define-color bg_base            #20233a;
+@define-color bg_base_rgb        rgb(32, 35, 58);
+@define-color bg_panel           #29334c;
+@define-color bg_panel_rgb       rgb(41, 51, 76);
 @define-color overlay_mist       #3d4662;
 @define-color overlay_mist_rgb   rgb(61, 70, 98);
 @define-color overlay_cloud      #576490;
 @define-color overlay_cloud_rgb  rgb(87, 100, 144);
 @define-color accent_sky         #7aaaff;
 @define-color accent_sky_rgb     rgb(122, 170, 255);
-@define-color accent_violet        #aa88ee;
-@define-color accent_violet_rgb    rgb(170, 136, 238);
-@define-color highlight        #c3bdf6;
-@define-color highlight_rgb    rgb(195, 189, 246);
+@define-color accent_violet      #aa88ee;
+@define-color accent_violet_rgb  rgb(170, 136, 238);
+@define-color highlight          #c3bdf6;
+@define-color highlight_rgb      rgb(195, 189, 246);
 @define-color fg_softwhite       #ececf2;
 @define-color fg_softwhite_rgb   rgb(236, 236, 242);
-@define-color maintext        #dfdfff;
-@define-color maintext_rgb    rgb(223, 223, 255);
-
+@define-color maintext           #dfdfff;
+@define-color maintext_rgb       rgb(223, 223, 255);
+@define-color translucent_dim    rgba(24, 26, 37, 0.5);
+@define-color translucent_base   rgba(32, 35, 58, 0.5);
+@define-color translucent_mist   rgba(61, 70, 98, 0.5);
+@define-color translucent_cloud  rgba(87, 100, 144, 0.5);
+@define-color translucent_sky    rgba(122, 170, 255, 0.3);
 
 * {
   font-family: 'CaskaydiaCove Nerd Font', monospace;
   font-size: 18px;
 }
 
-/* Window */
 window {
   margin: 0px;
   padding: 10px;
-  border: 8px solid @overlay_cloud;
+  border: 8px solid @translucent_sky;
   border-radius: 8px;
-  background-color: @overlay_mist;
+  background-color: @translucent_base;
 }
 
-/* Inner Box */
-#inner-box {
-  margin: 5px;
-  padding: 10px;
+#outer-box, #inner-box, #scroll {
+  background-color: transparent;
   border: none;
-  background-color: @bg_base;
+  margin: 0;
+  padding: 0;
 }
 
-/* Outer Box */
-#outer-box {
-  margin: 5px;
-  padding: 10px;
-  border: none;
-  background-color: @bg_base;
-}
-
-/* Scroll */
-#scroll {
-  margin: 0px;
-  padding: 10px;
-  border: none;
-  background-color: @bg_base;
-}
-
-/* Input */
 #input {
-  margin: 5px 20px;
+  margin: 10px;
   padding: 10px;
   border: none;
-  border-radius: 0.1em;
-  color: @maintext;
-  background-color: @bg_base;
+  border-radius: 6px;
+  color: @accent_sky;
+  background-color: transparent;
 }
 
 #input image {
-    border: none;
-    color: @accent_sky;
+  border: none;
+  color: transparent;
 }
 
 #input * {
-  outline: 4px solid @highlight;
+  outline: none;
 }
 
-/* Text */
 #text {
-  margin: 5px;
+  margin: 0;
+  padding: 0;
   border: none;
   color: @maintext;
+  background-color: transparent;
 }
 
 #entry {
-  background-color: @bg_base;
+  background-color: transparent;
+  padding: 10px 20px 10px 40px;
+  margin: 0;
+  border-radius: 0px;
+}
+
+#entry image {
+  background-color: transparent;
 }
 
 #entry arrow {
   border: none;
-  color: @accent_sky;
+  color: @translucent_sky;
 }
 
-/* Selected Entry */
 #entry:selected {
-  border: 0.11em solid @highlight;
+  background-color: rgba(122, 170, 255, 0.1);
+  border: 2px solid @accent_sky;
+  border-radius: 8px;
+  margin: 9px;
+  padding: 6px 16px 6px 36px;
 }
 
 #entry:selected #text {
-  color: @highlight;
+  color: @accent_sky;
+  background-color: transparent;
+}
+
+#entry:selected image {
+  background-color: transparent;
+}
+
+#entry:selected:focus {
+  outline: none;
 }
 
 #entry:drop(active) {
-  background-color: @bg_base;
+  background-color: @accent_sky;
 }
