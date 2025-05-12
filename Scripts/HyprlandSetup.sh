@@ -65,22 +65,34 @@ yay -S mpvpaper
 #Gif or static wallpapers
 sudo pacman -S swww
 
+#Mouse cursor themes
+yay -S catppuccin-cursors-mocha
+
+###Fun desktop apps###
+#Audio visualizer
+sudo pacman -S cava
+#Youtube Music Player
+yay -S youtube-music-bin
+
 #Make detect_idle script executable to detect borderless fullscreen apps in Hypridle
 chmod +x ~/.config/hypr/detect_borderless.sh
 
-#Fix KDE/Dolphin file association issues
-#sudo pacman -S archlinux-xdg-menu
-#XDG_MENU_PREFIX=arch- kbuildsycoca6
-#Add to hyprland config file if needed: env = XDG_MENU_PREFIX,arch-
+#Create config folders and install config
+# Clone your dotfiles repo
+git clone https://github.com/steve-conrad/Dot-Files.git ~/Dot-Files
+# Make sure the .config directory exists
+mkdir -p ~/.config
+# Copy the dotfiles from your repo
+cp -r ~/Dot-Files/Arch/.config/* ~/.config/
+# Clean up cloned repo
+rm -rf ~/Dot-Files
 
-#Create config folders
-#touch ~/.config/waybar/config
-#touch ~/.config/hypr/hyprpaper.conf
-#touch ~/.config/hypr/hyprlock.conf
 
 ############################
 ###Enable Systemd Startup###
 ############################
+
+#Use this to enable autologin without SDDM/GDM
 
 #Step 1: Create or update ~/.bash_profile
 # Add these lines to the end of the file:
