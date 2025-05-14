@@ -10,21 +10,37 @@ echo "📅 $(date)"
 echo "📄 Logging to $LOG_FILE"
 
 # Ask user which GPU drivers to install
-echo -n "Which GPU driver do you want to install? [amd/nvidia/skip]: "
-read -r GPU_CHOICE
+while true; do
+  echo "Which GPU driver do you want to install?"
+  echo "  1) AMD"
+  echo "  2) NVIDIA"
+  echo "  3) Skip"
+  echo -n "Enter 1, 2, or 3: "
+  read -r GPU_CHOICE
 
-if [[ "$GPU_CHOICE" == "amd" ]]; then
-  echo "🛠 Installing AMD GPU drivers..."
-  sudo pacman -S --needed mesa lib32-mesa vulkan-radeon
-elif [[ "$GPU_CHOICE" == "nvidia" ]]; then
-  echo "🛠 Installing NVIDIA GPU drivers..."
-  sudo pacman -S --needed nvidia nvidia-utils lib32-nvidia-utils vulkan-icd-loader lib32-vulkan-icd-loader
-else
-  echo "⚠ Skipping GPU driver installation."
-fi
+  case "$GPU_CHOICE" in
+    1)
+      echo "🛠 Installing AMD GPU drivers..."
+      sudo pacman -S --needed mesa lib32-mesa vulkan-radeon
+      break
+      ;;
+    2)
+      echo "🛠 Installing NVIDIA GPU drivers..."
+      sudo pacman -S --needed nvidia nvidia-utils lib32-nvidia-utils vulkan-icd-loader lib32-vulkan-icd-loader
+      break
+      ;;
+    3)
+      echo "⚠ Skipping GPU driver installation."
+      break
+      ;;
+    *)
+      echo "❌ Invalid choice. Please enter 1, 2, or 3."
+      ;;
+  esac
+done
 
 echo "▶ Updating system..."
-sudo pacman -Syu --noconfirm
+sudo pacman -Syu
 
 echo "▶ Installing Bluetooth & Printing support..."
 sudo pacman -S --needed bluez bluez-utils cups system-config-printer print-manager
