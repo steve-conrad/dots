@@ -1,5 +1,0 @@
-#Install these dependencies for the app to funcion
-
-fabric-git
-dbus-next
-requests
