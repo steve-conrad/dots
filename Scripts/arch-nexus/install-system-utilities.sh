@@ -9,6 +9,7 @@ packages=(
   mpvpaper
   swww
   ttf-font-awesome
+  nerd-fonts-jetbrains-mono
   wireplumber
   pavucontrol
   playerctl
