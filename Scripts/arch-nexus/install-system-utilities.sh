@@ -32,18 +32,49 @@ packages=(
   coolercontrol
 )
 
-for package in ${packages[@]}; do
-  yay -S --noconfirm --needed ${package}
+echo "Installing system utilities..."
+for package in "${packages[@]}"; do
+  yay -S --noconfirm --needed "$package"
 done
 
-echo "Enabling Network Service.."
-sudo systemctl start networkmanager
-sudo systemctl enable networkmanager
-echo "Enabling Bluetooth Service.."
-sudo systemctl start bluetooth.service
-sudo systemctl enable bluetooth
-echo "Enabling Printer Service.."
-systemctl start cups
-systemctl enable cups
-echo "Enabling Fan Controller.."
-sudo sensors-detect
+echo
+echo "Attempting to enable system services..."
+
+# Function to safely start and enable services
+enable_service() {
+  local service=$1
+  echo "Enabling $service..."
+
+  if systemctl list-unit-files | grep -q "^${service}"; then
+    if sudo systemctl start "$service"; then
+      echo "Started $service"
+    else
+      echo "Failed to start $service"
+    fi
+
+    if sudo systemctl enable "$service"; then
+      echo "Enabled $service to start at boot"
+    else
+      echo "Failed to enable $service"
+    fi
+  else
+    echo "Service '$service' not found. Skipping."
+  fi
+  echo
+}
+
+enable_service "networkmanager"
+enable_service "bluetooth.service"
+enable_service "cups"
+
+# Prompt user before running sensors-detect
+echo "Running fan and thermal sensor detection (lm_sensors)"
+read -rp "This will prompt for several yes/no hardware questions. Run now? [y/N]: " run_sensors
+if [[ "$run_sensors" =~ ^[Yy]$ ]]; then
+  sudo sensors-detect
+else
+  echo "Skipped sensors-detect."
+fi
+
+echo "System utilities setup complete."
+
