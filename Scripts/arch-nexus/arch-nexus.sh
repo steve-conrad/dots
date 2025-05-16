@@ -19,7 +19,7 @@ EOF
 clear
 print_logo
 
-# Exit on any error
+# Exit on error
 set -e
 
 # Menu options with keys and labels
@@ -38,8 +38,57 @@ declare -A scripts=(
 # Define the order of keys explicitly
 menu_order=(0 1 2 3 4 5 6 7 q)
 
+# Track quit state
 quit_chosen=0
 
+# Function blocks for actions
+run_1() {
+  echo "Updating system..."
+  sudo pacman -Syu --noconfirm
+}
+
+run_2() {
+  echo "Checking for yay..."
+  if ! command -v yay &> /dev/null; then
+    echo "🛠 Installing yay AUR helper..."
+    sudo pacman -S --needed git base-devel --noconfirm
+    rm -rf yay
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si --noconfirm
+    cd ..
+    rm -rf yay
+  else
+    echo "yay is already installed."
+  fi
+}
+
+run_3() {
+  echo "Running Desktop Environment and Window Manager setup..."
+  . install-DE-WM.sh
+}
+
+run_4() {
+  echo "Running GPU Driver installer..."
+  . install-drivers.sh
+}
+
+run_5() {
+  echo "Installing System Utilities..."
+  . install-system-utilities.sh
+}
+
+run_6() {
+  echo "Installing App Packages..."
+  . install-packages.sh
+}
+
+run_7() {
+  echo "Installing Dot Files..."
+  . install-dots.sh
+}
+
+# Main loop
 while true; do
   echo -e "\nWelcome to Arch Nexus. Select a menu option and press enter:"
   for key in "${menu_order[@]}"; do
@@ -51,65 +100,30 @@ while true; do
   case "$choice" in
     0)
       echo "Running full setup..."
-      "$0" 1
-      "$0" 2
-      "$0" 3
-      "$0" 4
-      "$0" 5
-      "$0" 6
-      "$0" 7
+      run_1
+      run_2
+      run_3
+      run_4
+      run_5
+      run_6
+      run_7
       quit_chosen=1
       break
       ;;
-    1)
-      echo "Updating system..."
-      sudo pacman -Syu --noconfirm
-      ;;
-    2)
-      echo "Checking for yay..."
-      if ! command -v yay &> /dev/null; then
-        echo "🛠 Installing yay AUR helper..."
-        sudo pacman -S --needed git base-devel --noconfirm
-        if [[ -d yay ]]; then
-          echo " 'yay' directory exists, removing it..."
-          rm -rf yay
-        fi
-        git clone https://aur.archlinux.org/yay.git
-        cd yay
-        makepkg -si --noconfirm
-        cd ..
-        rm -rf yay
-      else
-        echo "yay is already installed."
-      fi
-      ;;
-    3)
-      echo "Running Desktop Environment and Window Manager setup..."
-      . install-DE-WM.sh
-      ;;
-    4)
-      echo "Running GPU Driver installer..."
-      . install-drivers.sh
-      ;;
-    5)
-      echo "Installing System Utilities..."
-      . install-system-utilities.sh
-      ;;
-    6)
-      echo "Installing App Packages..."
-      . install-packages.sh
-      ;;
-    7)
-      echo "Installing Dot Files..."
-      . install-dots.sh
-      ;;
-    q)
+    1) run_1 ;;
+    2) run_2 ;;
+    3) run_3 ;;
+    4) run_4 ;;
+    5) run_5 ;;
+    6) run_6 ;;
+    7) run_7 ;;
+    q|Q)
       echo "Closing Script."
       quit_chosen=1
       break
       ;;
     *)
-      echo "Invalid choice. Please choose a valid option."
+      echo "❌ Invalid choice. Please choose a valid option."
       ;;
   esac
 done
