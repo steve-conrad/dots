@@ -1,5 +1,33 @@
 #!/bin/bash
 
+set -euo pipefail
+IFS=$'\n\t'
+
+# Helper function to install packages with yay and report errors but continue
+install_packages() {
+  local pkgs=("$@")
+  for pkg in "${pkgs[@]}"; do
+    echo "Installing package: $pkg"
+    if ! yay -S --noconfirm --needed "$pkg"; then
+      echo "Warning: Failed to install package $pkg. Continuing..."
+    fi
+  done
+}
+
+# Helper to enable and start a systemd user service if it exists
+enable_user_service() {
+  local svc=$1
+  if systemctl --user list-unit-files | grep -q "^${svc}"; then
+    if systemctl --user enable --now "$svc"; then
+      echo "Enabled and started $svc"
+    else
+      echo "Warning: Failed to enable/start $svc"
+    fi
+  else
+    echo "Warning: Service $svc not found, skipping enable/start"
+  fi
+}
+
 while true; do
   echo "Which desktop environment and display manager do you want to install?"
   echo "  1) Hyprland - Systemd auto-login (optional)"
@@ -10,7 +38,7 @@ while true; do
 
   case "$DE_CHOICE" in
     1)
-      echo "🛠 Installing Hyprland..."
+      echo "Installing Hyprland and related packages..."
       packages=(
         hyprland
         uwsm
@@ -23,12 +51,11 @@ while true; do
         xdg-desktop-portal-hyprland
         hyprpolkitagent
       )
-
-      for package in "${packages[@]}"; do
-        yay -S --noconfirm --needed "$package"
-      done
-
+      install_packages "${packages[@]}"
       echo "Hyprland and supporting packages installed."
+
+      # Enable waybar user service safely
+      enable_user_service "waybar.service"
 
       # Ask about .bash_profile update
       read -rp "Apply autostart changes to ~/.bash_profile? [y/N]: " apply_bash_profile
@@ -73,8 +100,8 @@ ExecStart=
 ExecStart=-/usr/bin/agetty --autologin ${username} --noclear %I \$TERM
 EOF
 
-        sudo systemctl daemon-reexec
-        sudo systemctl restart getty@tty1
+        sudo systemctl daemon-reexec || echo "Warning: Failed to reload systemd daemon"
+        sudo systemctl restart getty@tty1 || echo "Warning: Failed to restart getty@tty1 service"
         echo "Enabled systemd autologin for user: $username"
       else
         echo "Skipped getty@tty1 autologin configuration."
@@ -82,14 +109,14 @@ EOF
       ;;
 
     2)
-      echo "🛠 Installing KDE Plasma..."
-      yay -S --noconfirm --needed plasma-desktop sddm
+      echo "Installing KDE Plasma and SDDM..."
+      install_packages plasma-desktop sddm
       echo "KDE Plasma and SDDM installed."
       ;;
 
     3)
-      echo "🛠 Installing GNOME..."
-      yay -S --noconfirm --needed gnome gdm gnome-tweaks
+      echo "Installing GNOME, GDM, and gnome-tweaks..."
+      install_packages gnome gdm gnome-tweaks
       echo "GNOME and GDM installed."
       ;;
 
