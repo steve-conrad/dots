@@ -5,13 +5,9 @@ packages=(
   kitty
   neovim
   steam
-  fastfetch
   discord
-  wget
-  git
-  viewnior
-  btop
-  coolercontrol
+  cava
+  youtube-music-bin
 )
 
 for package in ${packages[@]}; do
