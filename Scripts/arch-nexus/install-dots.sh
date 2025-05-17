@@ -3,55 +3,64 @@
 DOTFILES_DIR="$HOME/Dot-Files"
 ARCH_DIR="$DOTFILES_DIR/Arch"
 
-# Clone or update the Dot-Files repo
+# Check if the Dot-Files repo already exists
 if [ ! -d "$DOTFILES_DIR" ]; then
-  echo "Cloning Dot-Files repo..."
+  echo "Cloning dotfiles repo..."
   git clone https://github.com/steve-conrad/Dot-Files.git "$DOTFILES_DIR"
 else
-  echo "Updating existing Dot-Files repo..."
+  echo "Dot-Files repo already exists. Updating..."
   git -C "$DOTFILES_DIR" pull
 fi
 
-# Make sure ~/.config exists
-mkdir -p "$HOME/.config"
-
-# Prompt user to select a theme
+# List available themes
 echo ""
 echo "Available themes:"
-themes=()
-i=1
-for dir in "$ARCH_DIR"/*/; do
-  theme=$(basename "$dir")
-  themes+=("$theme")
-  echo "  [$i] $theme"
-  ((i++))
+THEMES=($(ls -1 "$ARCH_DIR"))
+for i in "${!THEMES[@]}"; do
+  echo "[$i] ${THEMES[$i]}"
 done
-echo "  [q] Cancel"
+echo "[q] Cancel and return"
 
+# Prompt for selection
 echo ""
-read -rp "Select a theme to install [1-${#themes[@]} or q]: " choice
+read -p "Select a theme to install [0-${#THEMES[@]} or q]: " CHOICE
 
-if [[ "$choice" == "q" || "$choice" == "Q" ]]; then
+# Cancel option
+if [[ "$CHOICE" == "q" ]]; then
   echo "Theme installation canceled."
   exit 0
 fi
 
-if [[ ! "$choice" =~ ^[0-9]+$ ]] || (( choice < 1 || choice > ${#themes[@]} )); then
+# Check valid choice
+if ! [[ "$CHOICE" =~ ^[0-9]+$ ]] || (( CHOICE < 0 || CHOICE >= ${#THEMES[@]} )); then
   echo "Invalid selection."
   exit 1
 fi
 
-selected_theme="${themes[choice-1]}"
-theme_path="$ARCH_DIR/$selected_theme"
+SELECTED_THEME="${THEMES[$CHOICE]}"
+THEME_PATH="$ARCH_DIR/$SELECTED_THEME"
 
-echo "Installing theme: $selected_theme"
+echo "Installing theme: $SELECTED_THEME"
 
-# Copy theme folders into ~/.config, overwriting as needed
-for folder in "$theme_path"/*/; do
-  config_folder=$(basename "$folder")
-  echo "  Installing $config_folder..."
-  rm -rf "$HOME/.config/$config_folder"
-  cp -r "$folder" "$HOME/.config/"
-done
+# Make sure ~/.config exists
+mkdir -p "$HOME/.config"
 
-echo "Theme '$selected_theme' installed."
+# Copy theme files to ~/.config
+cp -r "$THEME_PATH/"* "$HOME/.config/"
+
+# Reload Hyprland if available
+if command -v hyprctl &> /dev/null; then
+  echo "Reloading Hyprland config..."
+  hyprctl reload
+fi
+
+# Reload Waybar only
+echo "Reloading Waybar..."
+killall waybar 2>/dev/null || true
+if command -v waybar &> /dev/null; then
+  nohup waybar > /dev/null 2>&1 &
+fi
+
+echo "Theme '$SELECTED_THEME' installed."
+echo "Please log out or reboot to apply full theme changes."
+
