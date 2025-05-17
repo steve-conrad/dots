@@ -1,0 +1,106 @@
+@define-color spirit_black         rgba(10, 18, 12, 1);
+@define-color spirit_black_alpha   rgba(10, 18, 12, 0.27);   /* 44 hex → 0.27 decimal */
+
+@define-color grave_moss           rgba(24, 49, 39, 1);
+@define-color grave_moss_alpha     rgba(24, 49, 39, 0.33);   /* 55 hex → 0.33 decimal */
+
+@define-color withered_ivy         rgba(58, 90, 73, 1);
+@define-color withered_ivy_alpha   rgba(58, 90, 73, 0.4);    /* 66 hex → 0.4 decimal */
+
+@define-color ectoplasm_mint       rgba(189, 246, 236, 1);
+@define-color ectoplasm_mint_alpha rgba(189, 246, 236, 0.2); /* 33 hex → 0.2 decimal */
+
+@define-color faded_jade           rgba(129, 199, 184, 1);
+@define-color faded_jade_alpha     rgba(129, 199, 184, 0.27); /* 44 hex → 0.27 decimal */
+
+@define-color phantom_mist         rgba(223, 253, 250, 1);
+@define-color phantom_mist_alpha   rgba(223, 253, 250, 0.13); /* 22 hex → 0.13 decimal */
+
+
+* {
+  font-family: 'CaskaydiaCove Nerd Font', monospace;
+  font-size: 18px;
+}
+
+window {
+  margin: 0px;
+  padding: 10px;
+  border: 8px solid @ectoplasm_mint_alpha;
+  border-radius: 8px;
+  background-color: @grave_moss_alpha;
+}
+
+#outer-box, #inner-box, #scroll {
+  background-color: transparent;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+#input {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  color: @ectoplasm_mint;
+  background-color: transparent;
+}
+
+#input image {
+  border: none;
+  color: transparent;
+}
+
+#input * {
+  outline: none;
+}
+
+#text {
+  margin: 0px;
+  padding: 10px;
+  border: none;
+  color: @ectoplasm_mint;
+  background-color: transparent;
+}
+
+#entry {
+  background-color: transparent;
+  padding: 10px 20px 10px 40px;
+  margin: 9px;
+  border-radius: 0px;
+}
+
+#entry image {
+  background-color: transparent;
+}
+
+#entry arrow {
+  border: none;
+  color: @ectoplasm_mint_alpha;
+}
+
+#entry:selected {
+  background-color: rgba(189, 246, 236, 0.1);
+  border: 2px solid @ectoplasm_mint;
+  border-radius: 8px;
+  margin: 9px;
+  padding: 6px 16px 6px 36px;
+}
+
+#entry:selected #text {
+  color: @ectoplasm_mint;
+  background-color: transparent;
+}
+
+#entry:selected image {
+  background-color: transparent;
+}
+
+#entry:selected:focus {
+  outline: none;
+}
+
+#entry:drop(active) {
+  background-color: @ectoplasm_mint;
+}
+

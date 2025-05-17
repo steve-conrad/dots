@@ -1,0 +1,214 @@
+/* Reset & base styles */
+* {
+  padding: 0;
+  border-radius: 0;
+  min-height: 0;
+  color: rgba(189, 246, 236, 0.7); /* ectoplasm_mint translucent */
+  font-weight: 500;
+  margin: 0;
+  border: none;
+  text-shadow: none;
+  transition: none;
+  box-shadow: none;
+}
+
+/* Main window background & text */
+window#waybar {
+  background: transparent;
+  color: #dffdfa; /* phantom_mist solid */
+  padding: 0px 0px;
+  margin: 0;
+  border-radius: 13px;
+}
+
+/* Module padding */
+.modules-left {
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.modules-right {
+  padding-right: 5px;
+  padding-top: 5px;
+}
+
+.modules-center {
+  padding-top: 5px;
+}
+
+/* Fonts and common backgrounds for modules and buttons */
+#custom-wofi,
+#workspaces button,
+#workspaces button:hover,
+#workspaces button.visible,
+#workspaces button.visible:hover,
+#workspaces button.active,
+#workspaces button.active:hover,
+#workspaces button.urgent,
+#window,
+#pulseaudio,
+#pulseaudio.muted,
+#clock,
+#mpris,
+#custom-notification,
+#bluetooth,
+#custom-wifi {
+  font-family: JetBrainsMono Nerd Font Propo;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(223, 253, 250, 1); /* phantom_mist solid */
+  background: rgba(24, 49, 39, 0.3); /* grave_moss_alpha */
+  border-radius: 2px;
+}
+
+/* Spacing for window and pulseaudio */
+#window,
+#pulseaudio,
+#pulseaudio.muted,
+#clock {
+  padding-right: 4px;
+  margin: 5px 0px;
+}
+
+/* Workspaces container */
+#workspaces {
+  margin: 0px;
+}
+
+/* Workspace buttons */
+#workspaces button {
+  color: rgba(129, 199, 184, 0.53); /* faded_jade translucent */
+  background: rgba(58, 90, 73, 0.3); /* withered_ivy_alpha */
+  min-width: 30px;
+  padding: 0 4px;
+  border-radius: 13px;
+  margin: 5px 3px;
+}
+
+#workspaces button:hover {
+  background: rgba(58, 90, 73, 0.3); /* withered_ivy_alpha */
+  border: 2px solid rgba(129, 199, 184, 0.53); /* faded_jade translucent */
+  border-radius: 13px;
+}
+
+#workspaces button.visible,
+#workspaces button.visible:hover,
+#workspaces button.active,
+#workspaces button.active:hover {
+  border: 2px solid rgba(129, 199, 184, 0.53); /* faded_jade translucent */
+  border-radius: 13px;
+  background: rgba(58, 90, 73, 0.3); /* withered_ivy_alpha */
+}
+
+/* Urgent workspace button */
+#workspaces button.urgent {
+  border: 2px solid #cc241d;
+  border-radius: 13px;
+  background: rgba(234, 105, 98, 0.3);
+}
+
+/* Window module */
+#window {
+  color: rgba(129, 199, 184, 0.65); /* faded_jade */
+  background: rgba(58, 90, 73, 0.3); /* withered_ivy_alpha */
+  border-radius: 13px;
+  padding: 5px 30px 7px;
+  margin: 4.3px 0px;
+}
+
+/* Pulseaudio module */
+#pulseaudio {
+  color: rgba(189, 246, 236, 0.65); /* ectoplasm_mint */
+  background: rgba(58, 90, 73, 0.3); /* withered_ivy_alpha */
+  border-radius: 13px;
+  padding: 5px 25px 6px;
+  margin: 4.3px 0px;
+}
+
+#pulseaudio:hover,
+#pulseaudio.muted:hover {
+  border: 2px solid rgba(129, 199, 184, 0.53); /* faded_jade translucent */
+  border-radius: 13px;
+  background: rgba(58, 90, 73, 0.3);
+}
+
+/* Muted pulseaudio */
+#pulseaudio.muted {
+  color: #bdf6ec; /* ectoplasm_mint solid */
+  background: rgba(58, 90, 73, 0.3);
+  border-radius: 13px;
+  padding: 5px 25px 6px;
+  margin: 4.5px 0px;
+}
+
+/* Clock */
+#clock.time {
+  color: rgba(189, 246, 236, 0.65); /* ectoplasm_mint */
+  background: rgba(58, 90, 73, 0.3);
+  padding: 4px 40px 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 13px;
+  margin: 3.5px 0px;
+}
+
+/* Mpris */
+#mpris {
+  color: rgba(189, 246, 236, 0.65); /* ectoplasm_mint */
+  border: none;
+  background: rgba(129, 199, 184, 0.3); /* faded_jade_alpha */
+  padding: 5px 13px 6px;
+  border-radius: 13px;
+  margin: 4px 0px;
+}
+
+/* Notifications */
+#custom-notification {
+  background: rgba(58, 90, 73, 0.3);
+  border-radius: 13px;
+  color: rgba(189, 246, 236, 0.65); /* ectoplasm_mint */
+  padding: 5px 13px 6px;
+  margin: 5px 0px;
+}
+
+#custom-notification:hover {
+  border: 2px solid rgba(129, 199, 184, 0.53); /* faded_jade translucent */
+  border-radius: 13px;
+  background: rgba(58, 90, 73, 0.3);
+}
+
+/* Bluetooth & WiFi */
+#bluetooth,
+#custom-wifi {
+  background: rgba(58, 90, 73, 0.3);
+  border-radius: 13px;
+  color: rgba(189, 246, 236, 0.65); /* ectoplasm_mint */
+  padding: 5px 13px 8px;
+  margin: 5px 0px;
+}
+
+#bluetooth:hover,
+#custom-wifi:hover {
+  border: 2px solid rgba(129, 199, 184, 0.53); /* faded_jade translucent */
+  border-radius: 13px;
+  background: rgba(58, 90, 73, 0.3);
+}
+
+/* Custom power */
+#custom-power {
+  color: rgba(189, 246, 236, 0.65); /* ectoplasm_mint */
+  background: rgba(58, 90, 73, 0.3);
+  min-width: 30px;
+  padding: 0 4px;
+  border-radius: 13px;
+  margin: 5px 3px;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 13px;
+}
+
+#custom-power:hover {
+  border: 2px solid rgba(129, 199, 184, 0.53); /* faded_jade translucent */
+  border-radius: 13px;
+  background: rgba(58, 90, 73, 0.3);
+}
+
