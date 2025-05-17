@@ -65,27 +65,27 @@ run_2() {
 
 run_3() {
   echo "Running Desktop Environment and Window Manager setup..."
-  . install-DE-WM.sh
+  ./install-DE-WM.sh
 }
 
 run_4() {
   echo "Running GPU Driver installer..."
-  . install-drivers.sh
+  ./install-drivers.sh
 }
 
 run_5() {
   echo "Installing System Utilities..."
-  . install-system-utilities.sh
+  ./install-system-utilities.sh
 }
 
 run_6() {
   echo "Installing App Packages..."
-  . install-packages.sh
+  ./install-packages.sh
 }
 
 run_7() {
   echo "Installing Dot Files..."
-  . install-dots.sh
+  ./install-dots.sh
 }
 
 # Main loop
