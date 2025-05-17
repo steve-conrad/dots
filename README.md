@@ -1,4 +1,4 @@
-**My personal dot files for my Arch Linux and MacOS devices**
+**My personal dot files for Arch Linux and MacOS devices**
 
 **REPO LAYOUT**
 
