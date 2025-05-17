@@ -14,7 +14,7 @@ Scripts - install scripts or other useful scripts I've made while learning arch/
 
 **To use arch-nexus** - download my repo and run ./arch-nexus.sh in your terminal from a directory containing the other necessary scripts.
 
-**RAINY ARCH**
+**RAINY**
 
 Rainy Firefox color theme: https://color.firefox.com/?theme=XQAAAAIoAQAAAAAAAABBKYhm849SCia2CaaEGccwS-xNKlhxiVqnfym9ZoiTt2uR4P5oeA4bMUpiBjGovLrgerKyUC6Hb47Wh-vc-mPwQ9tcvfwDgUeaV5gFuARDypW8qYrxdfrNtOA-_9msNVSt5umEo0R8kauV-6sCM2h2xs8ckRmuuk48mQiMl-duV2MXpDU5FtkqVecWZ_l_MrfCa3PvpXnUxlJsIT4qgcKwd1KEYHW_mVBMUme14cyahxFcaM8zR3JFFd9evUn-7Zrg
 
