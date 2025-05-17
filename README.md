@@ -8,7 +8,7 @@ MacOS - yabai configs (not really used as often)
 
 Scripts - install scripts or other useful scripts I've made while learning arch/hyprland
 
-**Install script:** **arch-nexus** is my primary install script for my entire Arch config. This is mainly a way for me to automate my arch setups going forward and to quickly load my config files for theme switching. This is in active development for my personal use but you are welcome to try it out at any stage. Just be aware that it may overwrite some autologin settings or your config if you're not careful with the choices.
+**Install script:** **arch-nexus** is my primary install script for my entire Arch config. This is mainly a way for me to automate my arch setups going forward and to quickly load my config files for theme switching. This is in active development for my personal use but you are welcome to try it out at any stage. Just be aware that it may overwrite some autologin settings or your config files if you're not careful with the choices.
 
 **Important note:** DE/WM install step - I have not tested the KDE and GNOME setups yet, only hyprland (uwsm-managed).
 
