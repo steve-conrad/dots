@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Print the logo
 print_logo() {
     cat << "EOF"
    ▄████████    ▄████████  ▄████████    ▄█    █▄         ███▄▄▄▄      ▄████████ ▀████    ▐████▀ ███    █▄     ▄████████ 
@@ -15,14 +14,13 @@ print_logo() {
 EOF
 }
 
-# Clear screen and print logo
 clear
 print_logo
 
-# Exit on error
 set -e
+source ./functions.sh
+source ./packages.sh
 
-# Menu options with keys and labels
 declare -A scripts=(
   ["0"]="Run All"
   ["1"]="Update system"
@@ -35,10 +33,7 @@ declare -A scripts=(
   ["q"]="Quit"
 )
 
-# Define the order of keys explicitly
 menu_order=(0 1 2 3 4 5 6 7 q)
-
-# Track quit state
 quit_chosen=0
 
 # Function blocks for actions
@@ -64,37 +59,53 @@ run_2() {
 }
 
 run_3() {
-  echo "Running Desktop Environment and Window Manager setup..."
+  echo "Running desktop environment and window manager setup..."
   ./install-DE-WM.sh
 }
 
 run_4() {
-  echo "Running GPU Driver installer..."
+  echo "Running GPU driver installer..."
   ./install-drivers.sh
 }
 
 run_5() {
-  echo "Installing System Utilities..."
-  ./install-system-utilities.sh
+  echo "Installing system utilities..."
+  install_packages "${system_utils[@]}"
+  echo "Installed system utilities"
+
+  echo "Enabling system services..."
+  enable_service "networkmanager"
+  enable_service "bluetooth.service"
+  enable_service "cups"
+
+  #Prompt before running sensors-detect
+  echo "Running fan and thermal sensor detection (lm_sensors)"
+  read -rp "This will prompt for several yes/no hardware questions. Run now? [y/N]: " run_sensors
+  if [[ "$run_sensors" =~ ^[Yy]$ ]]; then
+    sudo sensors-detect
+  else
+    echo "Skipped sensors-detect."
+  fi
+  echo "System utilities and services setup complete."
+  
 }
 
 run_6() {
-  echo "Installing App Packages..."
-  ./install-packages.sh
+  echo "Installing app packages..."
+  install_packages "${app_packages[@]}"
 }
 
 run_7() {
-  echo "Installing Dot Files..."
+  echo "Installing dot files..."
   ./install-dots.sh
 }
 
-# Main loop
 while true; do
   echo -e "\nWelcome to Arch Nexus. Select a menu option and press enter:"
   for key in "${menu_order[@]}"; do
     echo "  $key) ${scripts[$key]}"
   done
-  echo -n "Choice: "
+  echo -n "Enter 1-7 or q to quit: "
   read -r choice
 
   case "$choice" in
@@ -118,12 +129,12 @@ while true; do
     6) run_6 ;;
     7) run_7 ;;
     q|Q)
-      echo "Closing Script."
+      echo "Quitting Script."
       quit_chosen=1
       break
       ;;
     *)
-      echo "❌ Invalid choice. Please choose a valid option."
+      echo "Invalid choice. Please choose a valid option."
       ;;
   esac
 done

@@ -2,56 +2,21 @@
 
 set -euo pipefail
 IFS=$'\n\t'
-
-# Helper function to install packages with yay and report errors but continue
-install_packages() {
-  local pkgs=("$@")
-  for pkg in "${pkgs[@]}"; do
-    echo "Installing package: $pkg"
-    if ! yay -S --noconfirm --needed "$pkg"; then
-      echo "Warning: Failed to install package $pkg. Continuing..."
-    fi
-  done
-}
-
-# Helper to enable and start a systemd user service if it exists
-enable_user_service() {
-  local svc=$1
-  if systemctl --user list-unit-files | grep -q "^${svc}"; then
-    if systemctl --user enable --now "$svc"; then
-      echo "Enabled and started $svc"
-    else
-      echo "Warning: Failed to enable/start $svc"
-    fi
-  else
-    echo "Warning: Service $svc not found, skipping enable/start"
-  fi
-}
+source ./functions.sh
+source ./packages.sh
 
 while true; do
-  echo "Which desktop environment and display manager do you want to install?"
-  echo "  1) Hyprland - Systemd auto-login (optional)"
-  echo "  2) KDE Plasma - SDDM"
-  echo "  3) GNOME - GDM"
+  echo "Which desktop environment/window manager would you like to install?"
+  echo "  1) Hyprland (UWSM)/systemd autologin"
+  echo "  2) KDE Plasma/sddm"
+  echo "  3) GNOME/gdm"
   echo -n "Enter 1, 2, or 3: "
   read -r DE_CHOICE
 
   case "$DE_CHOICE" in
     1)
       echo "Installing Hyprland and related packages..."
-      packages=(
-        hyprland
-        uwsm
-        waybar
-        wofi
-        swaync
-        hyprshot
-        hyprlock
-        hypridle
-        xdg-desktop-portal-hyprland
-        hyprpolkitagent
-      )
-      install_packages "${packages[@]}"
+      install_packages "${hypr_packages[@]}"
       echo "Hyprland and supporting packages installed."
 
       # Enable waybar user service safely
@@ -110,13 +75,13 @@ EOF
 
     2)
       echo "Installing KDE Plasma and SDDM..."
-      install_packages plasma-desktop sddm
+      install_packages "${kde_packages[@]}"
       echo "KDE Plasma and SDDM installed."
       ;;
 
     3)
       echo "Installing GNOME, GDM, and gnome-tweaks..."
-      install_packages gnome gdm gnome-tweaks
+      install_packages "${gnome_packages[@]}"
       echo "GNOME and GDM installed."
       ;;
 
