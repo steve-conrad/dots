@@ -20,6 +20,7 @@ print_logo
 set -e
 source ./functions.sh
 source ./packages.sh
+source ./config.sh
 
 declare -A scripts=(
   ["0"]="Run All"
@@ -60,12 +61,12 @@ run_2() {
 
 run_3() {
   echo "Running desktop environment and window manager setup..."
-  ./install-DE-WM.sh
+  install_de_wm
 }
 
 run_4() {
   echo "Running GPU driver installer..."
-  ./install-drivers.sh
+  install_gpu_driver
 }
 
 run_5() {
@@ -97,7 +98,7 @@ run_6() {
 
 run_7() {
   echo "Installing dot files..."
-  ./install-dots.sh
+  install_dots
 }
 
 while true; do
