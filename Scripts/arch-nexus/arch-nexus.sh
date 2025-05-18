@@ -20,7 +20,6 @@ print_logo
 set -e
 source ./functions.sh
 source ./packages.sh
-source ./config.sh
 
 declare -A scripts=(
   ["0"]="Run All"
