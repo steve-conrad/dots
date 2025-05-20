@@ -8,7 +8,7 @@
 ; mode = normal
 
 # Accepts only non-negative values.
-; framerate = 60
+framerate = 120
 
 # 'autosens' will attempt to decrease sensitivity if the bars peak. 1 = on, 0 = off
 # new as of 0.6.0 autosens of low values (dynamic range)
@@ -142,7 +142,7 @@
 # 'sdl' uses the Simple DirectMedia Layer to render in a graphical context.
 # 'sdl_glsl' uses SDL to create an OpenGL context. Write your own shaders or
 # use one of the predefined ones.
-; method = noncurses
+method = noncurses
 
 # Orientation of the visualization. Can be 'bottom', 'top', 'left', 'right' or
 # 'horizontal'. Default is 'bottom'. 'left and 'right' are only supported on sdl
@@ -150,7 +150,7 @@
 # on noncurses output.
 # Note: many fonts have weird or missing glyphs for characters used in orientations
 # other than 'bottom', which can make output not look right.
-; orientation = bottom
+orientation = horizontal
 
 # Visual channels. Can be 'stereo' or 'mono'.
 # 'stereo' mirrors both channels with low frequencies in center.
@@ -212,7 +212,7 @@
 ; show_idle_bar_heads = 1
 
 # show waveform instead of frequency spectrum, 1 = on, 0 = off
-; waveform = 0
+waveform = 0
 
 [color]
 
