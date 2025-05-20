@@ -58,6 +58,7 @@ hypr_packages=(
 
 kde_packages=(
 	plasma
+	sddm
 )
 
 gnome_packages=(
