@@ -12,7 +12,7 @@ Scripts - install scripts or other useful scripts I've made while learning arch/
 
 **Important note:** DE/WM install step - I have not tested the KDE and GNOME setups yet, only hyprland (uwsm-managed).
 
-**To use arch-nexus** - download the scripts/arch-nexus folder and run ./arch-nexus.sh in your terminal from the same directory.
+**To use arch-nexus** - download the repo and run ./arch-nexus.sh in your terminal from the same directory.
 
 **RAINY**
 
