@@ -1,0 +1,48 @@
+@define-color maintext           #dfdfff;
+@define-color dim    		 rgba(24, 26, 37, 0.5);
+@define-color base   		 rgba(32, 35, 58, 0.7);
+@define-color blacklight 	 rgba(146, 120, 250, 0.4);
+@define-color violet		 #aa88ee;
+
+* {
+  outline: none;
+  font-family: 'CaskaydiaCove Nerd Font', monospace;
+  font-size: 18px;
+  border-radius: 100px;
+  background-color: transparent;
+}
+
+window {
+  border: 6px solid @blacklight;
+  background-color: @dim;
+}
+
+#text {
+  color: @violet;
+}
+
+#text:selected {
+  color: @violet;
+}
+
+#entry {
+  margin: 10px 55px;
+  padding: 4px;
+}
+
+#entry:selected {
+  border: 6px solid @blacklight;
+}
+
+#input {
+  color: @violet;
+  box-shadow: none;
+  margin: 40px;
+  padding: 10px;
+  border: 6px solid @blacklight;
+}
+
+#input:selected {
+  border: 6px solid @blacklight;
+}
+

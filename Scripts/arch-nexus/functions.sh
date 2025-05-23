@@ -183,7 +183,7 @@ done
 install_dots() {
 
 DOTFILES_DIR="$HOME/Dot-Files"
-ARCH_DIR="$DOTFILES_DIR/Arch"
+THEME_DIR="$DOTFILES_DIR/Arch/themes"
 
 # Check if the Dot-Files repo already exists
 if [ ! -d "$DOTFILES_DIR" ]; then
@@ -197,7 +197,7 @@ fi
 # List available themes
 echo ""
 echo "Available themes:"
-THEMES=($(ls -1 "$ARCH_DIR"))
+THEMES=($(ls -1 "$THEME_DIR"))
 for i in "${!THEMES[@]}"; do
   echo "[$i] ${THEMES[$i]}"
 done
@@ -220,7 +220,7 @@ if ! [[ "$CHOICE" =~ ^[0-9]+$ ]] || (( CHOICE < 0 || CHOICE >= ${#THEMES[@]} ));
 fi
 
 SELECTED_THEME="${THEMES[$CHOICE]}"
-THEME_PATH="$ARCH_DIR/$SELECTED_THEME"
+THEME_PATH="$THEME_DIR/$SELECTED_THEME"
 
 echo "Installing theme: $SELECTED_THEME"
 

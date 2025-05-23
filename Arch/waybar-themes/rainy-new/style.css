@@ -1,0 +1,50 @@
+* {
+min-height: 0px;
+min-width: 10px;
+color: rgba(122, 170, 255, 0.55);
+font-weight: 500;
+border: none;
+text-shadow: none;
+transition: none;
+box-shadow: none;
+background: transparent;
+padding: 0px 1px;
+border-radius: 15px;
+margin: 1px 1px;
+}
+
+window {
+  border: 3px solid rgba(122, 170, 255, 0.4);
+  border-radius: 20px;
+}
+
+#custom-power {
+  font-weight: 900;
+  margin-left: 20px;
+}
+
+#clock {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#workspaces {
+  border-radius: 20px;
+}
+
+#workspaces button.active {
+  border: 3px solid rgba(122, 170, 255, 0.4);
+}
+
+#workspaces button:hover {
+  border: 3px solid rgba(122, 170, 255, 0.4);
+}
+
+#custom-media {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#custom-notification {
+  margin-right: 20px;
+}
