@@ -116,7 +116,7 @@
     "tooltip-format-enumerate-connected-battery":
       "{device_alias}: {device_battery_percentage}%",
 
-    "on-click": "blueman-manager",
+    "on-click": "~/Dot-Files/Scripts/wofi/bluetooth.sh",
     "interval": 1,
     "min-length": 1,
     "max-length": 10
