@@ -29,4 +29,10 @@ if command -v waybar &> /dev/null; then
   nohup waybar > /dev/null 2>&1 &
 fi
 
+echo "Reloading Hyprpaper..."
+killall hyprpaper 2>/dev/null || true
+if command -v hyprpaper &> /dev/null; then
+  nohup hyprpaper > /dev/null 2>&1 &
+fi
+
 notify-send "Theme Changed" "Theme '$SELECTED_THEME' applied."
