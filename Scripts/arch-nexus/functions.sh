@@ -236,6 +236,9 @@ if command -v hyprctl &> /dev/null; then
   hyprctl reload
 fi
 
+# Enable waybar mediaplayer
+chmod +x ~/.config/waybar/scripts/mediaplayer.py
+
 # Reload Waybar only
 echo "Reloading Waybar..."
 killall waybar 2>/dev/null || true

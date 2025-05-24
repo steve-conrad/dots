@@ -1,7 +1,7 @@
 * {
 min-height: 0px;
 min-width: 10px;
-color: rgba(146, 120, 250, 0.55);
+color: rgba(146, 120, 250, 0.7);
 font-weight: 500;
 border: none;
 text-shadow: none;
@@ -14,7 +14,7 @@ margin: 1px 1px;
 }
 
 window {
-  border: 3px solid rgba(146, 120, 250, 0.4);
+  border: 3px solid rgba(146, 120, 250, 0.7);
   border-radius: 20px;
 }
 
@@ -33,11 +33,11 @@ window {
 }
 
 #workspaces button.active {
-  border: 3px solid rgba(146, 120, 250, 0.4);
+  border: 3px solid rgba(146, 120, 250, 0.7);
 }
 
 #workspaces button:hover {
-  border: 3px solid rgba(146, 120, 250, 0.4);
+  border: 3px solid rgba(146, 120, 250, 0.7);
 }
 
 #custom-media {
