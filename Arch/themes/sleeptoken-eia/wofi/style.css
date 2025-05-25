@@ -1,0 +1,51 @@
+@define-color crimson		 #ac2f52;
+@define-color crimson_a	 	 rgba(172, 47, 82, 0.8);
+@define-color heart		 #8a3663;
+@define-color heart_a		 rgba(138, 54, 99, 0.8);
+@define-color ash		 #a7a8ac;
+@define-color ash_a		 rgba(167, 168, 172, 0.8);
+@define-color granite		 #49494d;
+@define-color granite_a	 	 rgba(73, 73, 77, 0.8);
+
+* {
+  outline: none;
+  font-family: 'CaskaydiaCove Nerd Font', monospace;
+  font-size: 18px;
+  border-radius: 30px;
+  background-color: transparent;
+}
+
+window {
+  border: 6px solid @heart_a;
+  background-color: @granite_a;
+}
+
+#text {
+  color: @ash;
+}
+
+#text:selected {
+  color: @crimson;
+}
+
+#entry {
+  margin: 10px 55px;
+  padding: 4px;
+}
+
+#entry:selected {
+  border: 6px solid @heart_a;
+}
+
+#input {
+  color: @ash;
+  box-shadow: none;
+  margin: 40px;
+  padding: 10px;
+  border: 6px solid @crimson_a;
+}
+
+#input:selected {
+  border: 6px solid @crimson_a;
+}
+
