@@ -2,7 +2,7 @@
 
 app_packages=(
   firefox
-  kitty
+  ghostty
   neovim
   steam
   discord
