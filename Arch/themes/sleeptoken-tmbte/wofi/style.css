@@ -1,0 +1,48 @@
+@define-color moon  	#feffff;
+@define-color moon_a 	rgba(254, 255, 255, 0.7);
+@define-color ocean 	#12161f;
+@define-color ocean_a	rgba(18, 22, 31, 0.7);
+
+
+* {
+  outline: none;
+  font-family: 'CaskaydiaCove Nerd Font', monospace;
+  font-size: 18px;
+  border-radius: 100px;
+  background-color: transparent;
+}
+
+window {
+  border: 6px solid @moon_a;
+  background-color: @ocean_a;
+}
+
+#text {
+  color: @moon_a;
+}
+
+#text:selected {
+  color: @moon;
+}
+
+#entry {
+  margin: 10px 55px;
+  padding: 4px;
+}
+
+#entry:selected {
+  border: 6px solid @moon;
+}
+
+#input {
+  color: @moon_a;
+  box-shadow: none;
+  margin: 40px;
+  padding: 10px;
+  border: 6px solid @moon_a;
+}
+
+#input:selected {
+  border: 6px solid @moon_a;
+}
+
