@@ -52,6 +52,7 @@ hypr_packages=(
         hyprshot
         hyprlock
         hypridle
+	hyprpicker
         xdg-desktop-portal-hyprland
         hyprpolkitagent
 )
