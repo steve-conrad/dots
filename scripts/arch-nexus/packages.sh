@@ -41,6 +41,7 @@ system_utils=(
   fastfetch
   btop
   coolercontrol
+  lsd
 )
 
 hypr_packages=(

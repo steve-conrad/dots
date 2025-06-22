@@ -182,8 +182,8 @@ done
 #Install Dots
 install_dots() {
 
-DOTFILES_DIR="$HOME/Dot-Files"
-THEME_DIR="$DOTFILES_DIR/Arch/themes"
+DOTFILES_DIR="$HOME/dots"
+THEME_DIR="$DOTFILES_DIR/arch/themes"
 
 # Check if the Dot-Files repo already exists
 if [ ! -d "$DOTFILES_DIR" ]; then

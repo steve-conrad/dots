@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DOTFILES_DIR="$HOME/Dot-Files"
-THEME_DIR="$DOTFILES_DIR/Arch/themes"
+DOTFILES_DIR="$HOME/dots"
+THEME_DIR="$DOTFILES_DIR/arch/themes"
 
 mapfile -t THEMES < <(ls -1 "$THEME_DIR")
 
