@@ -24,22 +24,22 @@ class Bar(Window):
         )
 
         self.systray = SystemTray()
-        self.date_time = DateTime()
+        self.date_time = DateTime(
+            name="date_time",
+        )
         self.workspaces = Workspaces(
-            connection=get_hyprland_connection(),
-            workspace_button_class=WorkspaceButton,
+            name="workspaces",
         )
 
         self.children = CenterBox(
             left_children=[],
-            center_children=[self.workspaces, self.date_time],
+            center_children=[self.workspaces, self.date_time, self.systray],
             right_children=[],
         )
 
 
 if __name__ == "__main__":
     bar = Bar()
-    app = Application("bar-example", bar)
-    #Load CSS styles
+    app = Application("MenuBar", bar)
     app.set_stylesheet_from_file("./styles/bar.css", exposed_functions={}) 
     app.run()
