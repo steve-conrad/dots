@@ -1,0 +1,11 @@
+#bar {
+    background-color: #282c34;  /* Dark gray-blue background */
+    border-bottom: 1px solid #61afef; /* Thin blue bottom border */
+}
+
+#bar label {
+    color: #abb2bf;
+    font-weight: bold;
+    font-size: 14px;
+}
+
