@@ -11,8 +11,6 @@ from fabric.hyprland.widgets import (
         get_hyprland_connection,
 )
 
-from systemtray import SystemTray
-
 class Bar(Window):
     def __init__(self, **kwargs):
         super().__init__(
@@ -23,7 +21,6 @@ class Bar(Window):
             **kwargs
         )
 
-        self.systray = SystemTray()
         self.date_time = DateTime(
             name="date_time",
         )
@@ -33,7 +30,7 @@ class Bar(Window):
 
         self.children = CenterBox(
             left_children=[],
-            center_children=[self.workspaces, self.date_time, self.systray],
+            center_children=[self.date_time, self.workspaces],
             right_children=[],
         )
 
@@ -41,5 +38,5 @@ class Bar(Window):
 if __name__ == "__main__":
     bar = Bar()
     app = Application("MenuBar", bar)
-    app.set_stylesheet_from_file("./styles/bar.css", exposed_functions={}) 
+    app.set_stylesheet_from_file("./styles/bar.css") 
     app.run()
