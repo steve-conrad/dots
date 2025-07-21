@@ -3,8 +3,10 @@ from fabric import Application
 from fabric.widgets.datetime import DateTime
 from fabric.widgets.centerbox import CenterBox
 from fabric.widgets.box import Box
+from fabric.widgets.button import Button
 from fabric.widgets.wayland import WaylandWindow as Window
 from fabric.utils import get_relative_path, monitor_file
+from modules.power_menu import PowerMenu
 from fabric.hyprland.widgets import (
         Language,
         WorkspaceButton,
@@ -23,6 +25,10 @@ class Bar(Window):
             **kwargs
         )
 
+        self.power_button = Button (
+            label=" ",
+            name="power-button",
+        )
         self.date_time = DateTime(
             name="date-time",
         )
@@ -30,13 +36,19 @@ class Bar(Window):
             name="workspaces"
         )
         self.active_window = ActiveWindow(
-            name="active_window"
+            name="active-window"
         )
         self.children = CenterBox(
-            start_children=[self.date_time],
+            start_children=[self.power_button, self.date_time],
             center_children=[self.workspaces],
             end_children=[self.active_window],
         )
+
+        self.power_menu = PowerMenu(self.power_button)
+        self.power_button.connect("clicked", self.on_power_button_clicked)
+
+    def on_power_button_clicked(self, _):
+        self.power_menu.toggle_menu()
 
 
 if __name__ == "__main__":
@@ -49,7 +61,7 @@ if __name__ == "__main__":
             get_relative_path("./styles/bar.css")
         )
 
-    style_monitor = monitor_file(get_relative_path("./styles"))
+    style_monitor = monitor_file(get_relative_path("./styles/bar.css"))
     style_monitor.connect("changed", apply_stylesheet)
     apply_stylesheet() # initial styling
 
