@@ -6,18 +6,16 @@
 @define-color teal-dim rgba(127, 174, 204, 0.2);
 
 
+* {
+   all: unset;
+}
+
 #bar {
     font-family: JetBrainsMono Nerd Font, monospace;
     background-color: @midnight;
     border-top: 1px solid @teal;
     border-bottom: 1px solid @teal;
     border-radius: 12px;
-}
-
-#bar label {
-    color: @lavender; 
-    font-weight: bold;
-    font-size: 13px;
 }
 
 #workspaces {
@@ -37,17 +35,18 @@
 }
 
 #workspaces button.active {
+    color: @white;
     background-color: @teal-dim;
     border: 1px solid @teal;
-    color: @white;
 }
 
 #workspaces button:hover {
+    color: @white;
     background-color: @teal-dim;
     border: 1px solid @teal;
-    color: @white;
 }
 
-#date_time {
-    color: @midnight;
+#date-time {
+    background-color: @lavender-dim;
 }
+
