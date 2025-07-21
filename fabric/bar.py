@@ -20,10 +20,12 @@ class Bar(Window):
         super().__init__(
             name="bar",
             layer="top",
-            anchor="left top right",
+            anchor="top",
             exclusivity="auto",
             **kwargs
         )
+
+        self.set_size_request(1400, 30)
 
         self.power_button = Button (
             label=" ",
@@ -44,11 +46,6 @@ class Bar(Window):
             end_children=[self.active_window],
         )
 
-        self.power_menu = PowerMenu(self.power_button)
-        self.power_button.connect("clicked", self.on_power_button_clicked)
-
-    def on_power_button_clicked(self, _):
-        self.power_menu.toggle_menu()
 
 
 if __name__ == "__main__":
