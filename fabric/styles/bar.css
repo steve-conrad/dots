@@ -1,8 +1,8 @@
-@define-color white rgba(250, 250, 250, 0.5);
-@define-color midnight rgba(0, 0, 2, 0.7);
-@define-color lavender rgba(159, 150, 217, 0.5);
+@define-color white rgba(250, 250, 250, 0.7);
+@define-color midnight rgba(0, 0, 2, 0.8);
+@define-color lavender rgba(159, 150, 217, 0.7);
 @define-color lavender-dim rgba(159, 150, 217, 0.1);
-@define-color teal rgba(127, 174, 204, 0.5);
+@define-color teal rgba(127, 174, 204, 0.7);
 @define-color teal-dim rgba(127, 174, 204, 0.2);
 
 
@@ -65,20 +65,19 @@
 }
 
 #power-button {
+    color: @white;
     margin-left: 20px;
     margin-right: 20px;
 }
 
-#power-menu {
+#bluetooth-button {
+    color: @white;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-#power-menu-box {
-    border: 1px solid @teal;
-    margin-top: 20px;
-    padding: 0px 1px;
-}
-
-#power-menu-box button {
-    margin-top: 10px;
-    padding: 1px 1px;
+#network-button {
+    color: @white;
+    margin-left: 10px;
+    margin-right: 20px;
 }
