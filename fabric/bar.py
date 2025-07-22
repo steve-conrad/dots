@@ -28,7 +28,7 @@ class Bar(Window):
         self.default_bar_size = (1400, 30)
         self.set_size_request(*self.default_bar_size)
 
-        self.power_button = Button (
+        self.power_button = Button(
             label=" ",
             name="power-button"
         )
@@ -62,12 +62,18 @@ class Bar(Window):
             label=" ",
             name="network-button"
         )
-        self.network.connect("clicked", lambda *args: subprocess.Popen("nm-connection-editor")) 
+        self.network.connect("clicked", lambda *args: subprocess.Popen("nm-connection-editor"))
+
+        self.notifications = Button(
+            label=" ",
+            name="notifications-button"
+        )
+        self.notifications.connect("clicked", lambda *args: subprocess.Popen(["swaync-client", "-t", "-sw"]))
 
         self.children = CenterBox(
             start_children=[self.power_button, self.date_time],
             center_children=[self.workspaces],
-            end_children=[self.active_window, self.audio, self.bluetooth, self.network],
+            end_children=[self.active_window, self.audio, self.bluetooth, self.network, self.notifications],
         )   
 
     def run_power_menu_script(self, *args):
