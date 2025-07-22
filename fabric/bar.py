@@ -37,12 +37,21 @@ class Bar(Window):
         self.date_time = DateTime(
             name="date-time"
         )
+
         self.workspaces = Workspaces(
             name="workspaces"
         )
+
         self.active_window = ActiveWindow(
             name="active-window"
         )
+
+        self.audio = Button(
+            label=" ",
+            name="audio-button"
+        )
+        self.audio.connect("clicked", lambda *args: subprocess.Popen("pavucontrol"))
+
         self.bluetooth = Button(
             label=" ",
             name="bluetooth-button"
@@ -58,7 +67,7 @@ class Bar(Window):
         self.children = CenterBox(
             start_children=[self.power_button, self.date_time],
             center_children=[self.workspaces],
-            end_children=[self.active_window, self.bluetooth, self.network],
+            end_children=[self.active_window, self.audio, self.bluetooth, self.network],
         )   
 
     def run_power_menu_script(self, *args):
