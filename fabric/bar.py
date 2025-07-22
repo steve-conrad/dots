@@ -71,9 +71,9 @@ class Bar(Window):
         self.notifications.connect("clicked", lambda *args: subprocess.Popen(["swaync-client", "-t", "-sw"]))
 
         self.children = CenterBox(
-            start_children=[self.power_button, self.date_time],
+            start_children=[self.power_button, self.active_window],
             center_children=[self.workspaces],
-            end_children=[self.active_window, self.audio, self.bluetooth, self.network, self.notifications],
+            end_children=[self.date_time, self.audio, self.bluetooth, self.network, self.notifications],
         )   
 
     def run_power_menu_script(self, *args):

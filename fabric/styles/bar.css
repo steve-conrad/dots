@@ -51,7 +51,7 @@
     background-color: @lavender-dim;
     border: 1px solid transparent;
     border-radius: 8px;
-    margin-left: 100px;
+    margin-right: 140px;
     padding: 2px 10px;
 }
 
@@ -60,8 +60,7 @@
     background-color: @lavender-dim;
     border: 1px solid transparent;
     border-radius: 8px;
-    margin-right: 100px;
-    padding: 2px 10px;
+    margin-left: 100px;
 }
 
 #power-button {
