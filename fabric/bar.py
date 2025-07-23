@@ -1,6 +1,9 @@
 import fabric
 import subprocess
 import os
+import gi
+gi.require_version("Gdk", "3.0")
+from gi.repository import Gdk
 from fabric import Application
 from fabric.widgets.datetime import DateTime
 from fabric.widgets.centerbox import CenterBox
@@ -24,9 +27,15 @@ class Bar(Window):
             exclusivity="auto",
             **kwargs
         )
+       
+        screen = Gdk.Screen.get_default()        
+        monitor_num = screen.get_primary_monitor()
+        geometry = screen.get_monitor_geometry(monitor_num)
+        monitor_width_px = geometry.width
 
-        self.default_bar_size = (1400, 30)
-        self.set_size_request(*self.default_bar_size)
+        bar_width = int(monitor_width_px * 0.60)
+        bar_height = 30
+        self.set_size_request(bar_width, bar_height)
 
         self.power_button = Button(
             label=" ",
@@ -88,9 +97,6 @@ class Bar(Window):
         )
         subprocess.Popen([script_path]) 
        
-    #def run_scripts(self. *args):
-        #script_path = $script_path
-        #subprocess.Popen([script_path])
 
 if __name__ == "__main__":
     bar = Bar()
