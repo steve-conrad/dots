@@ -33,7 +33,7 @@ class Bar(Window):
         geometry = screen.get_monitor_geometry(monitor_num)
         monitor_width_px = geometry.width
 
-        bar_width = int(monitor_width_px * 0.60)
+        bar_width = int(monitor_width_px * 0.50)
         bar_height = 30
         self.set_size_request(bar_width, bar_height)
 
