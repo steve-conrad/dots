@@ -46,12 +46,12 @@
     border: 1px solid @teal;
 }
 
-#date-time label {
+#datetime label {
     color: @white;
     background-color: @lavender-dim;
     border: 1px solid transparent;
     border-radius: 8px;
-    margin-right: 140px;
+    margin-right: 120px;
     padding: 2px 10px;
 }
 
