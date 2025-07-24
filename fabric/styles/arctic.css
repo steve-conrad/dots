@@ -1,0 +1,81 @@
+@define-color glacier rgba(225, 240, 245, 0.8);
+@define-color nightsteel rgba(20, 25, 30, 0.9);
+@define-color pulse rgba(0, 222, 255, 0.7);
+@define-color pulse-dim rgba(0, 222, 255, 0.2);
+@define-color frost rgba(100, 110, 145, 0.5);
+@define-color frost-dim rgba(100, 110, 145, 0.15);
+
+* {
+    all: unset;
+}
+
+#bar {
+    font-family: JetBrainsMono Nerd Font, monospace;
+    background-color: @nightsteel;
+    border-top: 1px solid @pulse;
+    border-bottom: 1px solid @pulse;
+    border-radius: 12px;
+}
+
+#workspaces {
+    background-color: @frost-dim;
+    border-radius: 10px;
+    padding: 2px 10px;
+}
+
+#workspaces button {
+    color: @glacier;
+    padding: 2px 10px;
+    margin: 2px 4px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid transparent;
+    transition: 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+    color: @glacier;
+    background-color: @pulse-dim;
+    border: 1px solid @pulse;
+}
+
+#workspaces button:hover {
+    color: @glacier;
+    background-color: @pulse-dim;
+    border: 1px solid @pulse;
+}
+
+#datetime label {
+    color: @glacier;
+    background-color: @frost-dim;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    margin-right: 120px;
+    padding: 2px 10px;
+}
+
+#active-window label {
+    color: @glacier;
+    background-color: @frost-dim;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    margin-left: 100px;
+}
+
+#power-button,
+#audio-button,
+#bluetooth-button,
+#network-button,
+#notifications-button {
+    color: @glacier;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#power-button {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+#notifications-button {
+    margin-right: 20px;
+}
+

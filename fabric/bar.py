@@ -31,7 +31,7 @@ class Bar(Window):
         monitor_width_px = geometry.width
         
         #Set bar width based on monitor
-        bar_width = int(monitor_width_px * 0.50)
+        bar_width = int(monitor_width_px * 0.60)
         bar_height = 30
         self.set_size_request(bar_width, bar_height)
 
@@ -51,14 +51,14 @@ class Bar(Window):
 if __name__ == "__main__":
     bar = Bar()
     app = Application("MenuBar", bar)
-    app.set_stylesheet_from_file("./styles/bar.css")
+    app.set_stylesheet_from_file("./styles/default.css")
 
     def apply_stylesheet(*_):
         return app.set_stylesheet_from_file(
-            get_relative_path("./styles/bar.css")
+            get_relative_path("./styles/default.css")
         )
 
-    style_monitor = monitor_file(get_relative_path("./styles/bar.css"))
+    style_monitor = monitor_file(get_relative_path("./styles/default.css"))
     style_monitor.connect("changed", apply_stylesheet)
     apply_stylesheet()
 
