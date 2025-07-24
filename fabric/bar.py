@@ -1,12 +1,8 @@
-import fabric
-import subprocess
-import os
 import gi
 gi.require_version("Gdk", "3.0")
 from gi.repository import Gdk
 from fabric import Application
 from fabric.widgets.centerbox import CenterBox
-from fabric.widgets.button import Button
 from fabric.widgets.wayland import WaylandWindow as Window
 from fabric.utils import get_relative_path, monitor_file
 from modules._datetime import datetime
