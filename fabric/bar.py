@@ -24,29 +24,21 @@ class Bar(Window):
             **kwargs
         )
 
-        #Get display size 
         screen = Gdk.Screen.get_default()
         monitor_num = screen.get_primary_monitor()
         geometry = screen.get_monitor_geometry(monitor_num)
         monitor_width_px = geometry.width
         
-        #Set bar width based on monitor
         bar_width = int(monitor_width_px * 0.60)
         bar_height = 30
         self.set_size_request(bar_width, bar_height)
-
-        #Check if monitors changed or disconnect
-        screen.connect("monitors-changed", self.on_monitors_changed)
 
         self.children = CenterBox(
             start_children=[powerbutton, activewindow],
             center_children=[workspaces],
             end_children=[datetime, audio, bluetooth, network, notifications],
         )   
-    
-    def on_monitors_changed(self, screen):
-        self.show_all()
-       
+              
 
 if __name__ == "__main__":
     bar = Bar()
