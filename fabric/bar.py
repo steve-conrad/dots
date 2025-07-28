@@ -1,8 +1,8 @@
 import gi
-import os
 gi.require_version("Gdk", "3.0")
 from gi.repository import Gdk
 from fabric import Application
+from fabric.widgets.box import Box
 from fabric.widgets.centerbox import CenterBox
 from fabric.widgets.wayland import WaylandWindow as Window
 from fabric.utils import get_relative_path, monitor_file
@@ -31,15 +31,33 @@ class Bar(Window):
         monitor_width_px = geometry.width
 
         bar_scale = 0.6
-        bar_width = int(monitor_width_px * bar_scale)
+        bar_width = int(monitor_width_px * bar_scale) 
         bar_height = 30
         self.set_size_request(bar_width, bar_height)
 
         self.children = CenterBox(
-            start_children=[powerbutton, activewindow],
-            center_children=[workspaces],
-            end_children=[datetime, audio, bluetooth, network, notifications],
-        )   
+            name="center-bar",
+            start_children=Box(
+                name="start-container",
+                orientation="h",
+                spacing=4,
+                children=[powerbutton, activewindow],
+            ),
+            center_children=Box(
+                name="center-container",
+                orientation="h",
+                spacing=4,
+                children=[workspaces],
+            ),
+            end_children=Box(
+                name="end-container",
+                orientation="h",
+                spacing=4,
+                children=[datetime, audio, bluetooth, network, notifications],
+            ),
+        )
+
+        return self.show_all()
               
 if __name__ == "__main__":
     bar = Bar()
