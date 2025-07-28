@@ -1,4 +1,5 @@
 import gi
+import os
 gi.require_version("Gdk", "3.0")
 from gi.repository import Gdk
 from fabric import Application
@@ -28,8 +29,9 @@ class Bar(Window):
         monitor_num = screen.get_primary_monitor()
         geometry = screen.get_monitor_geometry(monitor_num)
         monitor_width_px = geometry.width
-        
-        bar_width = int(monitor_width_px * 0.60)
+
+        bar_scale = 0.6
+        bar_width = int(monitor_width_px * bar_scale)
         bar_height = 30
         self.set_size_request(bar_width, bar_height)
 
@@ -39,11 +41,9 @@ class Bar(Window):
             end_children=[datetime, audio, bluetooth, network, notifications],
         )   
               
-
 if __name__ == "__main__":
     bar = Bar()
     app = Application("MenuBar", bar)
-    app.set_stylesheet_from_file("./styles/default.css")
 
     def apply_stylesheet(*_):
         return app.set_stylesheet_from_file(
@@ -54,4 +54,5 @@ if __name__ == "__main__":
     style_monitor.connect("changed", apply_stylesheet)
     apply_stylesheet()
 
+    app.set_stylesheet_from_file("./styles/default.css")
     app.run()
