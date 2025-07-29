@@ -22,3 +22,6 @@ Rainy Firefox color theme: https://color.firefox.com/?theme=XQAAAAIoAQAAAAAAAABB
 ![2025-05-10-153049_hyprshot](https://github.com/user-attachments/assets/a9070301-b688-458d-bf6f-c61e1f9b77b9)
 ![2025-05-10-153100_hyprshot](https://github.com/user-attachments/assets/4199153b-90af-482e-83be-7c589b9cf9f5)
 ![2025-05-14-140502_hyprshot](https://github.com/user-attachments/assets/ce87ee1a-837b-4abc-82a9-b610557a8f58)
+=======
+# Dot-Files
+
